@@ -1,0 +1,18 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: dac-server.dockerfile
+    image: "dac-server"
+    container_name: dac-server
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    network_mode: "host"
+
+#     networks:
+#       - server_default
+
+# networks:
+#   server_default:
+#     external: true

@@ -10,20 +10,13 @@ import (
 )
 
 const (
-	host     = "localhost"
+	// host     = "localhost"
+	host     = "postgres" //service name for discovery
 	port     = 5432
 	user     = "admin"
 	password = "admin"
 	dbname   = "dac"
 )
-
-// type Record struct {
-// 	index      int
-// 	mac        string
-// 	cn         string
-// 	certs      string
-// 	flash_time string
-// }
 
 type Record struct {
 	Index      int    `json:"index,omitempty"`
@@ -66,7 +59,7 @@ func Get_cert(cn string) ([]byte, error) {
 		if jsonErr != nil {
 			return nil, jsonErr
 		}
-		fmt.Println(string(jsonData)) // For logging or debugging
+		fmt.Println(string(jsonData))
 		return jsonData, nil
 	default:
 		panic(err)
